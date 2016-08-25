@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello React</title>
+	<script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+    <style>
+        @import 'https://fonts.googleapis.com/css?family=Oswald';
+        
+        #example{
+            width: 500px;
+            height: 60px;
+            float:  left;
+            background-color: deeppink;
+            position: absolute;
+            left:  calc(50% - 250px);
+            top:  calc(50% - 30px);
+            cursor: pointer;
+            border-bottom:  10px solid #bc0b6b;
+            line-height: 60px;
+            text-align: center;
+            font-family: 'Oswald', sans-serif;
+            color: #000;
+            font-size: 1.5em;
+            transition: all .2s ease;
+        }
+        
+    </style>
+</head>
+<body>
+	<div id="example"></div>
+		
+	<script type="text/babel">
+		class LikeButton extends React.Component {
+          constructor() {
+            super();
+            this.state = {
+              liked: false
+            };
+            this.handleClick = this.handleClick.bind(this);
+          }
+          handleClick() {
+            this.setState({liked: !this.state.liked});
+          }
+          render() {
+            const text = this.state.liked ? 'gosto' : 'não gosto';
+            return (
+              <div onClick={this.handleClick}>
+                Eu {text} ReactJS. Clique aqui para alterar.
+              </div>
+            );
+          }
+        }
+
+        ReactDOM.render(
+          <LikeButton />,
+          document.getElementById('example')
+        );
+	</script>
+</body>
+</html>
