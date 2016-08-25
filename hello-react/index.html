@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello React</title>
+	<script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+    <style>
+    	@import 'https://fonts.googleapis.com/css?family=Oswald';
+    	
+    	#example{
+    		width: 660px;
+    		height: 60px;
+    		float:  left;
+    		padding: 20px;
+    		background-color: #000;
+    		margin-left: calc(50% - 350px);
+    	}
+    	#example2{
+    		width: 250px;
+    		height: auto;
+    		float: left;
+    		margin-top: 20px;
+    		margin-left: calc(50% - 125px);
+    		font-family: 'Oswald', sans-serif;
+    		color: #000;
+    		font-size: 1.4em;
+    	}
+    	p, input{
+    		font-family: 'Oswald', sans-serif;
+    		color: #FFF;
+    	}
+    	p{
+    		width: 100%;
+    		height: 60px;
+    		margin: 0px;
+    		line-height: 60px;
+    		font-size: 1.4em;    		
+    	}
+    	input{
+    		width: 169px;
+    		height: 30px;
+    		border: 0;
+    		margin: 0 10px;
+    		border-bottom: 1px solid #FFF;
+    		background-color: #000;
+    		font-size: 1em;
+    	}
+    </style>
+</head>
+<body>
+	<div id="example"></div>
+	<div id="example2"></div>
+		
+	<script type="text/babel">
+		var HelloWorld = React.createClass({
+			render: function(){
+				return (
+					<p>
+						Hello, <input type="text" placeholder="Yout name here" />! 
+						It is {this.props.date.toTimeString()} 
+					</p>
+				);
+			}
+		});
+		var child1 = React.createElement('li', null, 'First Text Content');
+		var child2 = React.createElement('li', null, 'Second Text Content');
+		var root = React.createElement('ul', { className: 'my-list' }, child1, child2);
+		setInterval(function(){
+			ReactDOM.render(
+				<HelloWorld date={new Date()} />,
+				document.getElementById('example')
+			);
+		}, 500);
+		ReactDOM.render(root, document.getElementById('example2'));
+			
+	</script>
+</body>
+</html>
